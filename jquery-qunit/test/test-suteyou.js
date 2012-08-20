@@ -19,11 +19,11 @@ function startSuteyoujsTest() {
 	  ok(true, "Success Suteyou.open");
 	});
 
-	test('Suteyou#gets', 1, function() {
+	test('Suteyou#gets', 11, function() {
 	  var line = "";
-	  for (var i = 0; line != undefined; i++) {
-	  	line = reader.gets();
+	  for (var i = 0; (line = reader.gets()) != undefined; i++) {
 	  	equal(line, "line " + i.toString(), "line " + i.toString());
 	  }
+	  ok(true, "Success Suteyou#gets");
 	});
 }
