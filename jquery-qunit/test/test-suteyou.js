@@ -1,6 +1,6 @@
 function startSuteyoujsTest() {
-	var s = new Suteyou();
 	var fileData = document.getElementById("inputFile").files[0];
+	var reader = undefined;
 
 	module('read file(text mode)', {
 	  setup: function() {
@@ -11,8 +11,19 @@ function startSuteyoujsTest() {
 	  }
 	});
 	
-	test('Suteyou.open', 1, function() {
-	  var reader = s.open(fileData, "r");
+	test('Suteyou.open', 4, function() {
+	  reader = Suteyou.open(fileData, "r");
+	  equal(reader.file.name, fileData.name, "reader.file.name=" + fileData.name);
+	  equal(reader.file.size, fileData.size, "reader.file.size=" + fileData.size);
+	  equal(reader.file.type, fileData.type, "reader.file.type=" + fileData.type);
 	  ok(true, "Success Suteyou.open");
+	});
+
+	test('Suteyou#gets', 1, function() {
+	  var line = "";
+	  for (var i = 0; line != undefined; i++) {
+	  	line = reader.gets();
+	  	equal(line, "line " + i.toString(), "line " + i.toString());
+	  }
 	});
 }
