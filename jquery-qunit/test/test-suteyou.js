@@ -13,6 +13,6 @@ function startSuteyoujsTest() {
 	
 	test('Suteyou.open', 1, function() {
 	  var reader = s.open(fileData, "r");
-	  equal(reader, !undefined, "Success s.open");
+	  ok(true, "Success Suteyou.open");
 	});
 }
